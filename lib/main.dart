@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_hackathon_two/core/app_service_locator.dart';
-import 'package:mini_hackathon_two/screens/shopping_list_screen.dart';
+import 'package:mini_hackathon_two/screens/home_screen.dart';
 
 void main() {
   setup();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ShoppingListScreen(),
+      home: const HomeScreen(),
     );
   }
 }

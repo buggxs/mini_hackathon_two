@@ -3,6 +3,8 @@ import 'package:openfoodfacts/openfoodfacts.dart';
 class OpenFoodService {
   final User user = const User(userId: '', password: '');
 
+  OpenFoodService();
+
   Future getProductFromBarcode(String barcode) async {
     final ProductQueryConfiguration configuration = ProductQueryConfiguration(
       barcode,
