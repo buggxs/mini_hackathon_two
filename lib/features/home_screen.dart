@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mini_hackathon_two/screens/cubit/home_cubit.dart';
+import 'package:mini_hackathon_two/features/cubit/home_cubit.dart';
 import 'package:mini_hackathon_two/widgets/food_bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,7 +41,8 @@ class HomeScreenContent extends StatelessWidget {
     return Column(
       children: [
         Text('Home Screen ${state.productAmount}'),
-        OutlinedButton(onPressed: cubit.increaseAmount, child: Text('increase'))
+        OutlinedButton(
+            onPressed: cubit.increaseAmount, child: const Text('increase'))
       ],
     );
   }

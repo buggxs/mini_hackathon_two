@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_hackathon_two/core/app_service_locator.dart';
-import 'package:mini_hackathon_two/screens/home_screen.dart';
+import 'package:mini_hackathon_two/features/home_screen.dart';
 
 void main() {
   setup();

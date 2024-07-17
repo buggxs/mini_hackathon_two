@@ -5,25 +5,23 @@ class OpenFoodService {
 
   OpenFoodService();
 
-  Future getProductFromBarcode(String barcode) async {
+  Future<Product> getProductFromBarcode(String barcode) async {
     final ProductQueryConfiguration configuration = ProductQueryConfiguration(
       barcode,
       language: OpenFoodFactsLanguage.GERMAN,
       fields: [ProductField.ALL],
       version: ProductQueryVersion.v3,
     );
-    try {
-      final ProductResultV3 result =
-          await OpenFoodAPIClient.getProductV3(configuration);
-      if (result.status == ProductResultV3.statusSuccess) {
-        return result.product;
-      }
-    } catch (e) {
-      throw Exception('Failed to get product from barcode');
+    final ProductResultV3 result =
+        await OpenFoodAPIClient.getProductV3(configuration);
+    if (result.status == ProductResultV3.statusSuccess &&
+        result.product != null) {
+      return result.product!;
     }
+    throw Exception('Product not found');
   }
 
-  Future getProductsByName(String name) async {
+  Future<List<Product>> getProductsByName(String name) async {
     final ProductQueryConfiguration configuration = ProductQueryConfiguration(
       name,
       language: OpenFoodFactsLanguage.GERMAN,
@@ -32,6 +30,10 @@ class OpenFoodService {
     );
     SearchResult result =
         await OpenFoodAPIClient.searchProducts(user, configuration);
-    return result.products?[0];
+    if (result.products == null) {
+      return [];
+    } else {
+      return result.products!;
+    }
   }
 }
